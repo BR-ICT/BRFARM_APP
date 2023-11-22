@@ -9,7 +9,7 @@ set GITHUB_USERNAME=publicforbr
 set GITHUB_TOKEN=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
 
 REM Set the repository URL
-set REPO_URL=github.com/BR-ICT/BRFARM_PRD.git develop
+set REPO_URL=github.com/BR-ICT/BRFARM_APP.git master
 
 REM Set the path to your local repository
 set LOCAL_REPO_PATH=%~dp0
