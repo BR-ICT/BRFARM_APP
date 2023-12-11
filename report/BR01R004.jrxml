@@ -180,8 +180,8 @@ FROM FAR_MFARM
 WHERE FARM_CODE = $P{Farm}) AS f
 ON a.FLOC_FARM = f.FARM_CODE
 LEFT JOIN
-(SELECT INFO_HOUSE,SUM(CASE WHEN INFO_ITEM IN ($P{HCC2004},$P{HCC3004}) AND INFO_DISE = 'H01' THEN INFO_QTY ELSE 0 END) AS SM_HC01,
-SUM(CASE WHEN INFO_ITEM IN ($P{HCC2004},$P{HCC3004}) AND INFO_DISE = 'H02' THEN INFO_QTY ELSE 0 END) AS SM_HC02
+(SELECT INFO_HOUSE,SUM(CASE WHEN INFO_ITEM IN ($P{HCC2004},$P{HCC3004}) AND INFO_DISE = 'H01' AND INFO_DESC != 'BE' THEN INFO_QTY ELSE 0 END) AS SM_HC01,
+SUM(CASE WHEN INFO_ITEM IN ($P{HCC2004},$P{HCC3004}) AND INFO_DISE = 'H02'AND INFO_DESC != 'BE' THEN INFO_QTY ELSE 0 END) AS SM_HC02
 FROM FAR_MINFORM
 WHERE INFO_FARM = $P{Farm}
 AND INFO_BREED = $P{Breed}
@@ -735,7 +735,7 @@ WHERE GDD NOT NULL]]>
 				</textField>
 				<textField pattern="#,##0">
 					<reportElement x="748" y="0" width="17" height="16" uuid="6ddadeae-f087-404d-bd56-38185f8c4a27"/>
-					<box rightPadding="0">
+					<box rightPadding="2">
 						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -815,7 +815,7 @@ WHERE GDD NOT NULL]]>
 				</textField>
 				<textField pattern="#,##0">
 					<reportElement x="765" y="0" width="17" height="16" uuid="25521f09-29f5-422b-a4c4-627b20888b25"/>
-					<box rightPadding="0">
+					<box rightPadding="2">
 						<pen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -916,7 +916,7 @@ WHERE GDD NOT NULL]]>
 				<textFieldExpression><![CDATA[$P{Breed}]]></textFieldExpression>
 			</textField>
 			<image>
-				<reportElement x="0" y="0" width="110" height="57" uuid="692bdf3b-c5f8-4376-96b2-4ab68abcd400"/>
+				<reportElement x="0" y="0" width="74" height="58" uuid="692bdf3b-c5f8-4376-96b2-4ab68abcd400"/>
 				<imageExpression><![CDATA["\\img\\logo\\icon.png"]]></imageExpression>
 			</image>
 		</band>
@@ -1702,7 +1702,7 @@ Y]]></text>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[""+$F{PC_HCG} == 0? null :""+$F{PC_HCG}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{PC_HCG} == 0? null :""+$F{PC_HCG}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00" isBlankWhenNull="true">
 				<reportElement x="623" y="0" width="19" height="17" uuid="40f15707-71f0-4688-8b4c-1abd5dae7e15"/>
@@ -1752,7 +1752,7 @@ Y]]></text>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font fontName="TH SarabunPSK" size="9"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{SM_HCC} == 0? null :""+$F{SM_HCC}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{SM_HCC} == 0? null :$F{SM_HCC}]]></textFieldExpression>
 			</textField>
 			<textField pattern="#,##0.00" isBlankWhenNull="true">
 				<reportElement x="714" y="0" width="17" height="17" uuid="e2bb1370-c5a2-42b1-93fe-0486dbeeeeca"/>
@@ -1776,7 +1776,7 @@ Y]]></text>
 			</textField>
 			<textField pattern="#,##0.00" isBlankWhenNull="true">
 				<reportElement x="748" y="0" width="17" height="17" uuid="7dd428cb-ee6c-4351-9a13-69855748d06d"/>
-				<box rightPadding="0">
+				<box rightPadding="2">
 					<pen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -1786,7 +1786,7 @@ Y]]></text>
 			</textField>
 			<textField pattern="#,##0.00" isBlankWhenNull="true">
 				<reportElement x="765" y="0" width="17" height="17" uuid="816109e3-efc4-4093-9aeb-782695cf2bea"/>
-				<box rightPadding="0">
+				<box rightPadding="2">
 					<pen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
@@ -1872,7 +1872,7 @@ Y]]></text>
 				<reportElement x="235" y="30" width="120" height="1" uuid="7f552b07-cee0-4fb9-80c9-ebb0b67d2318"/>
 			</line>
 			<line>
-				<reportElement x="520" y="30" width="122" height="1" uuid="7a35524e-fc9e-4a6e-8af3-747fbd40289e"/>
+				<reportElement x="521" y="30" width="122" height="1" uuid="7a35524e-fc9e-4a6e-8af3-747fbd40289e"/>
 			</line>
 		</band>
 	</pageFooter>
