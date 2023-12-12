@@ -197,7 +197,7 @@ AND SUBSTR(INFO_DATE,7) || SUBSTR(INFO_DATE,4,2) || SUBSTR(INFO_DATE,1,2) BETWEE
 Group by TRAN_HOUSE,INFO_BREED) as be
 on a.TRAN_HOUSE = be.TRAN_HOUSE
 )
-WHERE GDD NOT NULL]]>
+WHERE GDD NOT NULL and GDD != 0]]>
 	</queryString>
 	<field name="FLOC_FARM" class="java.lang.Object">
 		<property name="com.jaspersoft.studio.field.label" value="FLOC_FARM"/>
